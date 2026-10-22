@@ -1,0 +1,25 @@
+
+document.getElementById("productsGrid").innerHTML = filtered.length
+  ? filtered.map(p => `
+    <article class="card">
+      <div class="product-art">
+        <img
+          src="${p.image}"
+          alt="${p.name}"
+          loading="lazy"
+          onerror="this.style.display='none';this.parentElement.innerHTML='${p.emoji}'"
+        >
+      </div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">
+          ₹${p.price} <small>/ ${p.unit}</small>
+        </div>
+        <button class="add" onclick="addToCart(${p.id})">
+          🛒 कार्ट में जोड़ें
+        </button>
+      </div>
+    </article>
+  `).join("")
+  : `<div class="empty">कोई सामान नहीं मिला।</div>`;
